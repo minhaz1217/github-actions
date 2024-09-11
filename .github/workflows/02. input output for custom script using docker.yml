@@ -14,7 +14,7 @@ jobs:
         run: ls
 
       - name: Hello world action step
-        uses: ./say-hello-world/action.yml # Uses an action in the root directory
+        uses: ./say-hello-world/ # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: "Minhaz the Greatest"
