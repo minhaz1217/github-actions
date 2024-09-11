@@ -1,3 +1,4 @@
+on:
   push:
     branches:
       - 01. using premade actions
@@ -11,7 +12,7 @@ jobs:
         id: hello
         uses: actions/hello-world-docker-action@v2
         with:
-          who-to-greet: 'Minhaz the Great'
+          who-to-greet: "Minhaz the Great"
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

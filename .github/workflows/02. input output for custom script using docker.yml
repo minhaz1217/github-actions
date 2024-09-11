@@ -3,22 +3,22 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: 02. input output for custom script using docker
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: ls in 
+
+      - name: ls in
         run: ls
 
       - name: Hello world action step
-        uses: ./.github/workflows/actions/action.yml # Uses an action in the root directory
+        uses: ./say-hello-world/action.yml # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: "Minhaz the Greatest"
-      
+
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
