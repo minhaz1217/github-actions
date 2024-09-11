@@ -1,4 +1,6 @@
-on: [push]
+  push:
+    branches:
+      - 01. using premade actions
 
 jobs:
   hello_world_job:
