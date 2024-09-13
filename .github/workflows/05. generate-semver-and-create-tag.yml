@@ -11,20 +11,30 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Run the script
-        id: run-the-script
-        run: ./05-generate-semver-and-create-tag/generate.sh
-
-      - name: Bring output from the script
-        run: |
-          echo "The time was $MY_TIME"
-          echo "The color is ${{ steps.run-the-script.outputs.SELECTED_COLOR }}"
       
+      - name: Get Previous Version
+        id: get-previous-version
+        run: bash ./05-generate-semver-and-create-tag/previous-version.sh
+
+      - name: Check the previous version generated
+        run: |
+          echo "The next version is ${{ steps.get-previous-version.outputs.PREVIOUS_VERSION }}"
+
       - name: Generate Next Version
         id: generate-next-version
-        run: bash ./05-generate-semver-and-create-tag/next-version.sh -m 1.0.0
+        run: bash ./05-generate-semver-and-create-tag/next-version.sh -m ${{steps.get-previous-version.outputs.PREVIOUS_VERSION}}
 
       - name: Check the version generated
         run: |
           echo "The next version is ${{ steps.generate-next-version.outputs.NEXT_VERSION }}"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{steps.generate-next-version.outputs.NEXT_VERSION}}
+          release_name: Release ${{ steps.generate-next-version.outputs.NEXT_VERSION }}
+          draft: false
+          prerelease: false
