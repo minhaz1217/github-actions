@@ -23,7 +23,7 @@ jobs:
       
       - name: Generate Next Version
         id: generate-next-version
-        run: ./05-generate-semver-and-create-tag/next-version.sh -m 1.0.0
+        run: bash ./05-generate-semver-and-create-tag/next-version.sh -m 1.0.0
 
       - name: Check the version generated
         run: |
