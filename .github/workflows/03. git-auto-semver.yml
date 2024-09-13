@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master]
+    branches: 03. git-auto-semver
 jobs:
   versioning:
     runs-on: ubuntu-latest
