@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master]
+    branches: [05. generate-semver-and-create-tag]
 
 name: Generate Sementic Versioning and Create Tag
 jobs:
