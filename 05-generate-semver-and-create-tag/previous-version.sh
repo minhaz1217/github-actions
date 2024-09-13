@@ -4,7 +4,6 @@ echo $LATEST_TAG
 if [ -z $LATEST_TAG ]; then
   LATEST_TAG="0.0.0"
   echo "$LATEST_TAG"
-  exit 0
 fi
 
 if [[ $LATEST_TAG =~ [0-9]+\.[0-9]+\.[0-9]+$ ]]; then
