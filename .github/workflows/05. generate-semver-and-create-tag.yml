@@ -11,6 +11,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: check directory
+        run: |
+          ls
+
+      - name: check git version
+        run: |
+          git version
+
+      - name: check git branch
+        run: |
+          git branch
 
       - name: check git from outside
         run: git describe --tags `git rev-list --tags --max-count=1`
