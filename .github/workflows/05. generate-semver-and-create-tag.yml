@@ -20,9 +20,13 @@ jobs:
         run: |
           git version
 
-      - name: check git branch
+      - name: check git rev
         run: |
-          git branch
+          git rev-list --tags --max-count=1
+            
+      - name: check git describe
+        run: |
+          git describe --tags
 
       - name: check git from outside
         run: git describe --tags `git rev-list --tags --max-count=1`

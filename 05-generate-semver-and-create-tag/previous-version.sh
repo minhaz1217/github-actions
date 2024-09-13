@@ -1,4 +1,4 @@
-LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+LATEST_TAG=$(git describe --tags)
 
 echo $LATEST_TAG
 if [ -z $LATEST_TAG ]; then
