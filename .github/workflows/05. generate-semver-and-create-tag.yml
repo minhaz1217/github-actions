@@ -6,7 +6,7 @@ name: Generate Sementic Versioning and Create Tag
 jobs:
   build:
     permissions: write-all
-    name: Create Release
+    name: Generate Sementic Versioning and Create Tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,6 +17,14 @@ jobs:
         run: ./05-generate-semver-and-create-tag/generate.sh
 
       - name: Bring output from the script
-        run: 
+        run: |
           echo "The time was $MY_TIME"
           echo "The color is ${{ steps.run-the-script.outputs.SELECTED_COLOR }}"
+      
+      - name: Generate Next Version
+        id: generate-next-version
+        run: ./05-generate-semver-and-create-tag/next-version.sh -m 1.0.0
+
+      - name: Check the version generated
+        run: |
+          echo "The next version is ${{ steps.generate-next-version.outputs.NEXT_VERSION }}"
