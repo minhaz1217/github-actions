@@ -14,25 +14,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: check directory
-        run: |
-          ls -a
-
-      - name: check git version
-        run: |
-          git version
-
-      - name: check git rev
-        run: |
-          git rev-list --tags --max-count=1
-            
-      - name: check git describe
-        run: |
-          git describe --tags
-
-      - name: check git from outside
-        run: git describe --tags `git rev-list --tags --max-count=1`
-      
       - name: Get Previous Version
         id: get-previous-version
         run: bash ./05-generate-semver-and-create-tag/previous-version.sh
