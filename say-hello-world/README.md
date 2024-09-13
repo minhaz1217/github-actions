@@ -7,6 +7,7 @@ Then >>
 
 ## To change the permission
 ```
+git add entrypoint.sh
 git update-index --chmod=+x entrypoint.sh
 ```
 

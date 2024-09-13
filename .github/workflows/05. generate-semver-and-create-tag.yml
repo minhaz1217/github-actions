@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [feature/generate-semver-and-create-tag]
+
+name: Create Release
+jobs:
+  build:
+    permissions: write-all
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run the script
+        id: run-the-script
+        run: ./05.\ generate-semver-and-create-tag/generate.sh
+
+      - name: Bring output from the script
+        run: echo "The time was ${{ steps.run-the-script.outputs.time }}"
