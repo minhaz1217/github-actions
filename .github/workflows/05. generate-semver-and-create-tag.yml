@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [feature/generate-semver-and-create-tag]
+    branches: [master]
 
 name: Create Release
 jobs:

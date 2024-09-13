@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master]
+    branches: [04. creating tag]
 
 name: Create Release
 
